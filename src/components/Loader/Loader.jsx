@@ -1,13 +1,13 @@
 import { ThreeDots } from 'react-loader-spinner';
 import { createPortal } from 'react-dom';
-import css from './Loader.module.css';
+import { Blur, LoaderStyled } from './Loader.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export const Loader = () => {
   return createPortal(
-    <div className={css.blur}>
-      <div className={css.loader}>
+    <Blur>
+      <LoaderStyled>
         <ThreeDots
           height="80"
           width="80"
@@ -16,8 +16,8 @@ export const Loader = () => {
           ariaLabel="three-dots-loading"
           visible={true}
         />
-      </div>
-    </div>,
+      </LoaderStyled>
+    </Blur>,
     modalRoot
   );
 };

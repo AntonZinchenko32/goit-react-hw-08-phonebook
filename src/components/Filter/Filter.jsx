@@ -2,19 +2,16 @@ import { useDispatch } from 'react-redux';
 import { setFilterQuery } from 'redux/filterSlice';
 import { nanoid } from 'nanoid';
 
-import css from './Filter.module.css';
+import { Label, Input } from './Filter.styled';
 
 const Filter = () => {
   const filterInputId = nanoid();
   const dispatch = useDispatch();
   return (
     <>
-      <label htmlFor={filterInputId} className={css.label}>
-        Find contacts by name
-      </label>
-      <input
+      <Label htmlFor={filterInputId}>Find contacts by name</Label>
+      <Input
         id={filterInputId}
-        className={css.input}
         onChange={evt => dispatch(setFilterQuery(evt.target.value))}
       />
     </>

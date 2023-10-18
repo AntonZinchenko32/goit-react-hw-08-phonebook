@@ -3,17 +3,19 @@ import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 import { Loader } from 'components/Loader/Loader';
-// redux
+// Redux
 import { fetchContacts } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectError, selectIsLoading } from 'redux/selectors';
 
+// React
 import { useEffect } from 'react';
 
-import css from './App.module.css';
+// Styles
+import { Container, Headline } from './App.styled';
+import { Global } from 'styles/Global.styled';
 
 export const App = () => {
-  const { container, headline } = css;
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -23,13 +25,16 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={container}>
-      <h1 className={headline}>Phonebook</h1>
-      <ContactForm />
-      <h1 className={headline}>Contacts</h1>
-      <Filter />
-      {isLoading && !error && <Loader />}
-      <ContactList />
-    </div>
+    <>
+      <Global />
+      <Container>
+        <Headline>Phonebook</Headline>
+        <ContactForm />
+        <Headline>Contacts</Headline>
+        <Filter />
+        {isLoading && !error && <Loader />}
+        <ContactList />
+      </Container>
+    </>
   );
 };

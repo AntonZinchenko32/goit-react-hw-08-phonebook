@@ -4,12 +4,10 @@ import { selectContacts } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, fetchContacts } from 'redux/operations';
 
-import css from './ContactForm.module.css';
+import { Form, Input, SubmitButton } from './ContactForm.styled';
 
 const ContactForm = () => {
   const contactsList = useSelector(selectContacts);
-
-  const { form, inputStyled, submitButton } = css;
 
   const nameInputId = nanoid();
   const phoneInputId = nanoid();
@@ -46,11 +44,10 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={form} onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <label htmlFor={nameInputId}>Name</label>
-      <input
+      <Input
         id={nameInputId}
-        className={inputStyled}
         type="text"
         name="nameInput"
         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -58,19 +55,16 @@ const ContactForm = () => {
         required
       />
       <label htmlFor={phoneInputId}>Phone Number</label>
-      <input
+      <Input
         id={phoneInputId}
-        className={inputStyled}
         type="tel"
         name="phoneInput"
         pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
-      <button className={submitButton} type="submit">
-        Add contact
-      </button>
-    </form>
+      <SubmitButton type="submit">Add contact</SubmitButton>
+    </Form>
   );
 };
 
