@@ -1,8 +1,8 @@
 // Components
-import ContactForm from '../ContactForm/ContactForm';
-import Filter from '../Filter/Filter';
-import ContactList from '../ContactList/ContactList';
-import { Loader } from 'components/Loader/Loader';
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
+import { Loader } from 'components/Loader';
 // Redux
 import { fetchContacts } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
