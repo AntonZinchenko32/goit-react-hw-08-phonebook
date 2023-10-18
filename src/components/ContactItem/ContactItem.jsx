@@ -8,7 +8,7 @@ const ContactItem = ({ name, id, phone }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    await dispatch(deleteContact(id));
+    await dispatch(deleteContact(id)).unwrap();
     dispatch(fetchContacts());
   };
 

@@ -23,7 +23,7 @@ const ContactForm = () => {
     });
 
     if (!gotMatch) {
-      await dispatch(addContact({ name, phone }));
+      await dispatch(addContact({ name, phone })).unwrap();
       dispatch(fetchContacts());
     } else {
       alert(`${name} already in list`);
