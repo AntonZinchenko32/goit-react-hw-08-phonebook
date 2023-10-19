@@ -1,40 +1,43 @@
 // Components
-import ContactForm from '../ContactForm';
-import Filter from '../Filter';
-import ContactList from '../ContactList';
-import { Loader } from 'components/Loader';
+import Layout from 'components/Layout';
+import Home from 'Pages/Home';
+// import ContactList from '../ContactList';
+// import { Loader } from 'components/Loader';
 // Redux
 import { fetchContacts } from 'redux/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+// import { selectError, selectIsLoading } from 'redux/selectors';
 
 // React
 import { useEffect } from 'react';
+import { lazy } from 'react';
+// Routes
+import { Routes, Route } from 'react-router-dom';
 
-// Styles
-import { Container, Headline } from './App.styled';
-import { Global } from 'styles/Global.styled';
+// // Styles
+// import { Container, Headline } from './App.styled';
+
+const Register = lazy(() => import('Pages/Register'));
+const Login = lazy(() => import('Pages/Login'));
+const Contacts = lazy(() => import('Pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <>
-      <Global />
-      <Container>
-        <Headline>Phonebook</Headline>
-        <ContactForm />
-        <Headline>Contacts</Headline>
-        <Filter />
-        {isLoading && !error && <Loader />}
-        <ContactList />
-      </Container>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+        <Route path="contacts" element={<Contacts />} />
+      </Route>
+    </Routes>
   );
 };
