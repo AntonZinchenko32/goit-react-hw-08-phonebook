@@ -17,8 +17,8 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(logOut.fulfilled, handleLogOut)
-      .addCase(refreshUser.pending, state => (state.isRefreshing = true))
-      .addCase(refreshUser.rejected, state => (state.isRefreshing = false))
+      .addCase(refreshUser.pending, state => {state.isRefreshing = true})
+      .addCase(refreshUser.rejected, state => {state.isRefreshing = false})
       .addCase(refreshUser.fulfilled, handleRefresh)
       .addMatcher(isAnyOf(register.fulfilled, logIn.fulfilled), handleLogIn);
   },

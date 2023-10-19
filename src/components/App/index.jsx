@@ -2,15 +2,20 @@
 import Layout from 'components/Layout';
 import Home from 'Pages/Home';
 // import ContactList from '../ContactList';
-// import { Loader } from 'components/Loader';
+import { Loader } from 'components/Loader';
 // Redux
+import { refreshUser } from 'redux/auth/operations';
 // import { fetchContacts } from 'redux/contacts/operations';
-// import { useDispatch } from 'react-redux';
-// // import { selectError, selectIsLoading } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+// import { selectError, selectIsLoading } from 'redux/selectors';
 
 // // React
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { lazy } from 'react';
+
+// Hooks
+import { useAuth } from 'hooks';
+
 // Routes
 import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from 'guards/PrivateRoute';
@@ -21,13 +26,16 @@ const Login = lazy(() => import('Pages/Login'));
 const Contacts = lazy(() => import('Pages/Contacts'));
 
 export const App = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
