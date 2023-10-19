@@ -4,9 +4,9 @@ export default function Home() {
   return (
     <Container>
       <Title>
-        Task manager welcome page{' '}
+        Phonebook home page{' '}
         <span role="img" aria-label="Greeting icon">
-          💁‍♀️
+          ☎
         </span>
       </Title>
     </Container>
