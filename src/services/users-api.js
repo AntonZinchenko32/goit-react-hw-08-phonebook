@@ -8,9 +8,9 @@ const setAuthHeader = token => {
 };
 
 // Utility to remove JWT
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 export const signUp = async (name, email, password) => {
   console.log({ name, email, password });
@@ -24,3 +24,15 @@ export const signIn = async (email, password) => {
   setAuthHeader(data.token);
   return data;
 };
+
+export const signOut = async () => {
+  await axios.post('/users/logout');
+  clearAuthHeader();
+}
+
+export const refresh = async () => {
+  const token = JSON.parse(localStorage.getItem('persist:auth'))
+  setAuthHeader(JSON.parse(token?.token))
+  const { data } = await axios.get('/current')
+  return data
+}

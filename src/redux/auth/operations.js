@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signUp, signIn } from 'services/users-api';
+import { signUp, signIn, signOut, refresh } from 'services/users-api';
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -9,3 +9,7 @@ export const register = createAsyncThunk(
 export const logIn = createAsyncThunk('auth/login', ({ email, password }) =>
   signIn(email, password)
 );
+
+export const logOut = createAsyncThunk('auth/login', () => signOut());
+
+export const refreshUser = createAsyncThunk('auth/refresh', () => refresh());
