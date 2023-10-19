@@ -11,6 +11,8 @@ const Layout = () => {
           <Link to="/" end>
             Home
           </Link>
+          <Link to="/register">Registration</Link>
+          <Link to="/login">Login</Link>
           <Link to="/contacts">Contacts</Link>
         </nav>
       </Header>

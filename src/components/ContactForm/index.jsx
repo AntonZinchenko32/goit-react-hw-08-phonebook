@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
 // redux
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, fetchContacts } from 'redux/operations';
+import { addContact, fetchContacts } from 'redux/contacts/operations';
 
 import { Form, Input, SubmitButton } from './ContactForm.styled';
 

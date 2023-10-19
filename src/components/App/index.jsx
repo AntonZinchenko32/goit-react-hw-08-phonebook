@@ -4,7 +4,7 @@ import Home from 'Pages/Home';
 // import ContactList from '../ContactList';
 // import { Loader } from 'components/Loader';
 // Redux
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 // import { selectError, selectIsLoading } from 'redux/selectors';
 

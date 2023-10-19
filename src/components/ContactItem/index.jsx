@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { deleteContact, fetchContacts } from 'redux/operations';
+import { deleteContact, fetchContacts } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 import { Item, DeleteButton } from './ContactItem.styled';
 

@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader';
 // Styles
 import { Container, Headline } from './Contacts.styled';
 // Redux
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
 
 const Contacts = () => {
