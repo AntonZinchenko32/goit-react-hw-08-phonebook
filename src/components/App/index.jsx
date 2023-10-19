@@ -4,12 +4,12 @@ import Home from 'Pages/Home';
 // import ContactList from '../ContactList';
 // import { Loader } from 'components/Loader';
 // Redux
-import { fetchContacts } from 'redux/contacts/operations';
-import { useDispatch } from 'react-redux';
-// import { selectError, selectIsLoading } from 'redux/selectors';
+// import { fetchContacts } from 'redux/contacts/operations';
+// import { useDispatch } from 'react-redux';
+// // import { selectError, selectIsLoading } from 'redux/selectors';
 
-// React
-import { useEffect } from 'react';
+// // React
+// import { useEffect } from 'react';
 import { lazy } from 'react';
 // Routes
 import { Routes, Route } from 'react-router-dom';
@@ -21,11 +21,11 @@ const Login = lazy(() => import('Pages/Login'));
 const Contacts = lazy(() => import('Pages/Contacts'));
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <Routes>

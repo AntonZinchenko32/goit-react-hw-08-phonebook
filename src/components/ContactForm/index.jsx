@@ -10,18 +10,18 @@ const ContactForm = () => {
   const contactsList = useSelector(selectContacts);
 
   const nameInputId = nanoid();
-  const phoneInputId = nanoid();
+  const numberInputId = nanoid();
 
   const dispatch = useDispatch();
 
   const handleCheck = async (contacts, contactData) => {
-    const { name, phone } = contactData;
+    const { name, number } = contactData;
     const gotMatch = contacts.find(contact => {
       return contact.name.toLowerCase() === name.toLowerCase();
     });
 
     if (!gotMatch) {
-      await dispatch(addContact({ name, phone })).unwrap();
+      await dispatch(addContact({ name, number })).unwrap();
       dispatch(fetchContacts());
     } else {
       alert(`${name} already in list`);
@@ -33,12 +33,12 @@ const ContactForm = () => {
 
     const form = evt.currentTarget;
 
-    const { nameInput, phoneInput } = evt.currentTarget.elements;
+    const { nameInput, numberInput } = evt.currentTarget.elements;
 
     const name = nameInput.value.trim();
-    const phone = phoneInput.value.trim();
+    const number = numberInput.value.trim();
 
-    handleCheck(contactsList, { name, phone });
+    handleCheck(contactsList, { name, number });
 
     form.reset();
   };
@@ -54,13 +54,13 @@ const ContactForm = () => {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <label htmlFor={phoneInputId}>Phone Number</label>
+      <label htmlFor={numberInputId}>Number</label>
       <Input
-        id={phoneInputId}
+        id={numberInputId}
         type="tel"
-        name="phoneInput"
+        name="numberInput"
         pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        title="Number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
       <SubmitButton type="submit">Add contact</SubmitButton>
