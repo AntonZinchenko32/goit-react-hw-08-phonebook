@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice, isFulfilled } from '@reduxjs/toolkit';
 
 import { register, logIn, logOut, refreshUser } from './operations';
 
@@ -35,7 +35,7 @@ const authSlice = createSlice({
       .addCase(register.rejected, () =>
         handleReject('This email is already registered')
       )
-      .addMatcher(isAnyOf(register.fulfilled, logIn.fulfilled), handleLogIn);
+      .addMatcher(isFulfilled(register, logIn), handleLogIn);
   },
 });
 
