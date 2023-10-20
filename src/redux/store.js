@@ -14,8 +14,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 // Slices
-import { contactsReducer } from './contacts/contactsSlice';
-import { filterReducer } from './contacts/filterSlice';
+import { contactsReducer } from './contacts/slice';
+import { filterReducer } from './filter/filterSlice';
 import { authReducer } from './auth/slice';
 
 

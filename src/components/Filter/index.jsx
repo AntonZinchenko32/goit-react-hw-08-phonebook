@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilterQuery } from 'redux/contacts/filterSlice';
+import { setFilterQuery } from 'redux/filter/filterSlice';
 import { nanoid } from 'nanoid';
 
 import { Label, Input } from './Filter.styled';

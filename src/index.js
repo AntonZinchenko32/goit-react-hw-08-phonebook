@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+// Gllobal styles
 import { Global } from 'styles/Global.styled';
 
 import { store, persistor } from './redux/store';
