@@ -25,14 +25,16 @@ export const signIn = async (email, password) => {
   return data;
 };
 
-export const signOut = async () => {
-  await axios.post('/users/logout');
-  clearAuthHeader();
-}
-
 export const refresh = async () => {
   const token = JSON.parse(localStorage.getItem('persist:auth'))
   setAuthHeader(JSON.parse(token?.token))
   const { data } = await axios.get('/current')
   return data
 }
+
+export const signOut = async () => {
+  await axios.post('/users/logout');
+  clearAuthHeader();
+}
+
+
