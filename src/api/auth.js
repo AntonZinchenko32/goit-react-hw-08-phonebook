@@ -33,7 +33,7 @@ export const refresh = async () => {
 }
 
 export const signOut = async () => {
-  await axios.post('/users/logout');
+  await axios.post('/logout');
   clearAuthHeader();
 }
 

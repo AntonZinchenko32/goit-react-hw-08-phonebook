@@ -10,6 +10,6 @@ export const logIn = createAsyncThunk('auth/login', ({ email, password }) =>
   signIn(email, password)
 );
 
-export const logOut = createAsyncThunk('auth/login', () => signOut());
+export const logOut = createAsyncThunk('auth/logout', () => signOut());
 
 export const refreshUser = createAsyncThunk('auth/refresh', () => refresh());
