@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   handleFulfilled,
   handleFulfilledAll,
   handlePending,
   handleRejected,
 } from './helpers';
-import { fetchContacts } from './operations';
+import { addContact, deleteContact, fetchContacts } from './operations';
 
 const contactsInitialState = {
   items: [],
@@ -20,7 +20,14 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.fulfilled, handleFulfilledAll)
       .addMatcher(action => action.type.endsWith('pending'), handlePending)
-      .addMatcher(action => action.type.endsWith('rejected'), handleRejected)
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.rejected,
+          addContact.rejected,
+          deleteContact.rejected
+        ),
+        handleRejected
+      )
       .addMatcher(action => action.type.endsWith('fulfilled'), handleFulfilled);
   },
 });

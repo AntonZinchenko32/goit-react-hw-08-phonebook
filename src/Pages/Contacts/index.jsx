@@ -16,6 +16,7 @@ const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
+  console.log(error);
 
   useEffect(() => {
     dispatch(fetchContacts());
