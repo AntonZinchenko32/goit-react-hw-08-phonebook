@@ -2,7 +2,12 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { register, logIn, logOut, refreshUser } from './operations';
 
-import { handleLogIn, handleLogOut, handleRefresh, handleReject } from './helpers';
+import {
+  handleLogIn,
+  handleLogOut,
+  handleRefresh,
+  handleReject,
+} from './helpers';
 
 const initialState = {
   user: { name: null, email: null },
@@ -17,11 +22,17 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(logOut.fulfilled, handleLogOut)
-      .addCase(refreshUser.pending, state => {state.isRefreshing = true})
-      .addCase(refreshUser.rejected, state => {state.isRefreshing = false})
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.rejected, state => {
+        state.isRefreshing = false;
+      })
       .addCase(refreshUser.fulfilled, handleRefresh)
       .addCase(logIn.rejected, () => handleReject('User not found'))
-      .addCase(register.rejected, () => handleReject('This user is already registered'))
+      .addCase(register.rejected, () =>
+        handleReject('This user is already registered')
+      )
       .addMatcher(isAnyOf(register.fulfilled, logIn.fulfilled), handleLogIn);
   },
 });

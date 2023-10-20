@@ -15,13 +15,15 @@ export const logIn = createAsyncThunk('auth/login', ({ email, password }) =>
 // LogOut
 export const logOut = createAsyncThunk('auth/logout', () => signOut());
 
-
 // Refresh
-export const refreshUser = createAsyncThunk('auth/refresh', async (_, {rejectWithValue}) => {
-  
-  const persistedAuthData = JSON.parse(localStorage.getItem('persist:auth'));
-  const parsedPersistedToken = JSON.parse(persistedAuthData?.token)
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, { rejectWithValue }) => {
+    const persistedAuthData = JSON.parse(localStorage.getItem('persist:auth'));
+    const parsedPersistedToken = JSON.parse(persistedAuthData?.token);
 
-  if (parsedPersistedToken === null) return rejectWithValue('Unable to fetch user');
-  else refresh(parsedPersistedToken)
-});
+    if (parsedPersistedToken === null)
+      return rejectWithValue('Unable to fetch user');
+    else return refresh(parsedPersistedToken);
+  }
+);
