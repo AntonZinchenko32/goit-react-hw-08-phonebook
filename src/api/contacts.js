@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const fetchAll = async () => {
   const { data } = await axios.get('/contacts');
@@ -8,7 +7,8 @@ export const fetchAll = async () => {
 };
 
 export const addItem = async (name, number) => {
-  const { data } = await axios.post('/contacts', { name, number });
+  // const jsonData = JSON.stringify({ name, number })
+  const { data } = await axios.post('/contacts', {name, number});
   return data;
 };
 
