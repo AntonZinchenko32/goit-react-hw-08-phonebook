@@ -1,4 +1,4 @@
-import { createSlice, isFulfilled } from '@reduxjs/toolkit';
+import { createSlice, isFulfilled, isPending } from '@reduxjs/toolkit';
 
 import { register, logIn, logOut, refreshUser } from './operations';
 
@@ -14,6 +14,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false
 };
 
 const authSlice = createSlice({
@@ -29,13 +30,20 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
-      .addCase(logIn.rejected, () =>
-        handleReject('User not found or wrong password')
+      .addCase(logIn.rejected, state =>
+      {
+        state.isLoading = false
+        return handleReject('User not found or wrong password')
+      }
       )
-      .addCase(register.rejected, () =>
-        handleReject('This email is already registered')
+      .addCase(register.rejected, state =>
+      {
+        state.isLoading = false
+        return handleReject('This email is already registered')
+      }
       )
-      .addMatcher(isFulfilled(register, logIn), handleLogIn);
+      .addMatcher(isFulfilled(register, logIn), handleLogIn)
+      .addMatcher(isPending(register, logIn), state => {state.isLoading = true})
   },
 });
 
