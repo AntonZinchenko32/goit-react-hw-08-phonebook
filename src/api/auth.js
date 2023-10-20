@@ -13,7 +13,6 @@ const clearAuthHeader = () => {
 };
 
 export const signUp = async (name, email, password) => {
-  console.log({ name, email, password });
   const { data } = await axios.post('/users/signup', { name, email, password });
   setAuthHeader(data.token);
   return data;
