@@ -13,7 +13,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isRefreshing: false
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -21,6 +21,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(refreshUser.fulfilled, handleRefresh)
       .addCase(logOut.fulfilled, handleLogOut)
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -28,8 +29,9 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.fulfilled, handleRefresh)
-      .addCase(logIn.rejected, () => handleReject('User not found or wrong password'))
+      .addCase(logIn.rejected, () =>
+        handleReject('User not found or wrong password')
+      )
       .addCase(register.rejected, () =>
         handleReject('This email is already registered')
       )
