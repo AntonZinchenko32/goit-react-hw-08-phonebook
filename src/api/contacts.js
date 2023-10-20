@@ -7,7 +7,6 @@ export const fetchAll = async () => {
 };
 
 export const addItem = async (name, number) => {
-  // const jsonData = JSON.stringify({ name, number })
   const { data } = await axios.post('/contacts', {name, number});
   return data;
 };
