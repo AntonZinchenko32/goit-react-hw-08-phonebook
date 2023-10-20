@@ -29,9 +29,9 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(refreshUser.fulfilled, handleRefresh)
-      .addCase(logIn.rejected, () => handleReject('User not found'))
+      .addCase(logIn.rejected, () => handleReject('User not found or wrong password'))
       .addCase(register.rejected, () =>
-        handleReject('This user is already registered')
+        handleReject('This email is already registered')
       )
       .addMatcher(isAnyOf(register.fulfilled, logIn.fulfilled), handleLogIn);
   },
