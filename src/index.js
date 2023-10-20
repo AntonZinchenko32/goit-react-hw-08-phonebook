@@ -1,3 +1,5 @@
+// Toast
+import { Toaster } from 'react-hot-toast';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <BrowserRouter basename="/goit-react-hw-08-phonebook">
           <Global />
           <App />
+          <Toaster />
         </BrowserRouter>
       </PersistGate>
     </Provider>

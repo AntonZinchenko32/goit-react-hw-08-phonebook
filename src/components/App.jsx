@@ -1,21 +1,15 @@
 // Components
 import Layout from 'components/Layout';
 import Home from 'Pages/Home';
-// import ContactList from '../ContactList';
 import { Loader } from 'components/Loader';
 // Redux
 import { refreshUser } from 'redux/auth/operations';
-// import { fetchContacts } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
-// import { selectError, selectIsLoading } from 'redux/selectors';
-
-// // React
+// React
 import { useEffect } from 'react';
 import { lazy } from 'react';
-
 // Hooks
 import { useAuth } from 'hooks';
-
 // Routes
 import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from 'guards/PrivateRoute';

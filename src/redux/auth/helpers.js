@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 export const handleLogIn = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
@@ -15,3 +17,7 @@ export const handleRefresh = (state, { payload }) => {
   state.isLoggedIn = true;
   state.isRefreshing = false;
 };
+
+export const handleReject = text => {
+  toast.error(text, {duration: 4000});
+}
