@@ -24,23 +24,23 @@ const authSlice = createSlice({
     builder
       .addCase(refreshUser.fulfilled, handleRefresh)
       .addCase(logOut.fulfilled, handleLogOut)
-      .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
+      .addCase(refreshUser.pending, ({ isRefreshing }) => {
+        isRefreshing = true;
       })
-      .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
+      .addCase(refreshUser.rejected, ({ isRefreshing }) => {
+        isRefreshing = false;
       })
-      .addCase(logIn.rejected, state => {
-        state.isLoading = false;
+      .addCase(logIn.rejected, ({ isLoading }) => {
+        isLoading = false;
         return handleReject('User not found or wrong password');
       })
-      .addCase(register.rejected, state => {
-        state.isLoading = false;
+      .addCase(register.rejected, ({ isLoading }) => {
+        isLoading = false;
         return handleReject('This email is already registered');
       })
       .addMatcher(isFulfilled(register, logIn), handleLogIn)
-      .addMatcher(isPending(register, logIn), state => {
-        state.isLoading = true;
+      .addMatcher(isPending(register, logIn), ({ isLoading }) => {
+        isLoading = true;
       });
   },
 });
