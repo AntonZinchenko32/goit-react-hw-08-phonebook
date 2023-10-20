@@ -24,10 +24,8 @@ export const signIn = async (email, password) => {
   return data;
 };
 
-export const refresh = async () => {
-  const persistedAuthData = JSON.parse(localStorage.getItem('persist:auth'));
-
-  setAuthHeader(JSON.parse(persistedAuthData?.token));
+export const refresh = async token => {
+  setAuthHeader(token);
   const { data } = await axios.get('/users/current');
   return data;
 };
