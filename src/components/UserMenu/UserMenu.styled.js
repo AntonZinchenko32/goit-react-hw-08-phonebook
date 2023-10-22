@@ -7,8 +7,6 @@ export const Wrapper = styled.div`
   gap: 12px;
 `;
 
-
-
 export const LogOut = styled(Link)`
   padding: 8px 16px;
   border-radius: 4px;
@@ -16,7 +14,7 @@ export const LogOut = styled(Link)`
   color: black;
   font-weight: 500;
 
-  &.active {
+  &:hover {
     color: white;
     background-color: orangered;
   }
