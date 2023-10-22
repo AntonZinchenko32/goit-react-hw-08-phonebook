@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   gap: 12px;
 `;
 
-export const LogOut = styled(Link)`
+export const LogOutLink = styled(Link)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
