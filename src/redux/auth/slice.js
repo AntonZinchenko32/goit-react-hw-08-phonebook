@@ -32,15 +32,15 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(logIn.rejected, state => {
-        state.isLoading = false;
+        toogleLoader(state)
         return handleReject('User not found or wrong password');
       })
       .addCase(register.rejected, state => {
-        state.isLoading = false;
+        toogleLoader(state)
         return handleReject('This email is already registered');
       })
       .addMatcher(isFulfilled(register, logIn), handleLogIn)
-      .addMatcher(isPending(register, logIn), toogleLoader);
+      .addMatcher(isPending(register, logIn, logOut), toogleLoader);
   },
 });
 
