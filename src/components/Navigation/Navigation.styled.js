@@ -8,7 +8,11 @@ export const Link = styled(NavLink)`
   color: black;
   font-weight: 500;
 
-  &.active {
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  &.active, &:hover {
     color: white;
     background-color: orangered;
   }
