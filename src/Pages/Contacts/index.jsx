@@ -23,7 +23,6 @@ const Contacts = () => {
 
   return (
     <Container>
-      <Headline>Phonebook</Headline>
       <ContactForm />
       <Headline>Contacts</Headline>
       <Filter />

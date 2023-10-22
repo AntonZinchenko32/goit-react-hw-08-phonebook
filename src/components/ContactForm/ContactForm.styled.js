@@ -2,17 +2,19 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
+  justify-content: space-around;
+
+  width: 100%;
   margin-bottom: 40px;
 
-  padding: 25px;
 
   border: 1px solid black;
 `;
 
 export const Input = styled.input`
-  margin: 15px 0;
+  margin: 15px 0px;
 
   width: 270px;
   height: 28px;
