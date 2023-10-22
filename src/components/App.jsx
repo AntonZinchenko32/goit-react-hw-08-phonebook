@@ -21,13 +21,13 @@ const Contacts = lazy(() => import('Pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoading } = useAuth();
+  const { isLoading } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing || isLoading ? (
+  return isLoading ? (
     <Loader />
   ) : (
     <Routes>

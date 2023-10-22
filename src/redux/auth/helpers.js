@@ -1,5 +1,6 @@
 import toast from 'react-hot-toast';
 
+// Перемикач відображення Лоудера
 export const toogleLoader = state => {
   state.isLoading = !state.isLoading;
 };
@@ -21,7 +22,7 @@ export const handleLogOut = state => {
 export const handleRefresh = (state, { payload }) => {
   state.user = payload;
   state.isLoggedIn = true;
-  state.isRefreshing = false;
+  toogleLoader(state)
 };
 
 export const handleReject = text => {
