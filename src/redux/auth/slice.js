@@ -7,6 +7,7 @@ import {
   handleLogOut,
   handleRefresh,
   handleReject,
+  toogleLoader,
 } from './helpers';
 
 const initialState = {
@@ -39,9 +40,7 @@ const authSlice = createSlice({
         return handleReject('This email is already registered');
       })
       .addMatcher(isFulfilled(register, logIn), handleLogIn)
-      .addMatcher(isPending(register, logIn), state => {
-        state.isLoading = true;
-      });
+      .addMatcher(isPending(register, logIn), toogleLoader);
   },
 });
 

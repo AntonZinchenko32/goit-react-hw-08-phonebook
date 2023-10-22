@@ -22,3 +22,9 @@ export const handleRefresh = (state, { payload }) => {
 export const handleReject = text => {
   toast.error(text, { duration: 4000 });
 };
+
+
+export const toogleLoader = state => {
+  state.isLoading = !state.isLoading;
+};
+
