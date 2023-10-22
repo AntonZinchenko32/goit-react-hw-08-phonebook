@@ -5,6 +5,4 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 12px;
 `;
-export const UserName = styled.p`
-  font-weight: 700;
-`;
+
