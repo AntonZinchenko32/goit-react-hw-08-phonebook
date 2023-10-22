@@ -1,4 +1,6 @@
-import { createSlice, isFulfilled, isPending } from '@reduxjs/toolkit';
+
+
+import { createSlice, isFulfilled, isPending, isAnyOf } from '@reduxjs/toolkit';
 
 import { register, logIn, logOut, refreshUser } from './operations';
 
@@ -7,7 +9,7 @@ import {
   handleLogOut,
   handleRefresh,
   handleReject,
-  toogleLoader,
+  toogleLoader
 } from './helpers';
 
 const initialState = {
@@ -22,18 +24,17 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(refreshUser.pending, toogleLoader)
-      .addCase(refreshUser.rejected, toogleLoader)
       .addCase(refreshUser.fulfilled, handleRefresh)
       .addCase(logIn.rejected, state => {
         toogleLoader(state)
-        return handleReject('User not found or wrong password');
+        handleReject('User not found or wrong password')
       })
       .addCase(register.rejected, state => {
         toogleLoader(state)
-        return handleReject('This email is already registered');
+        handleReject('This email is already registered')
       })
       .addCase(logOut.fulfilled, handleLogOut)
+      .addMatcher(isAnyOf(refreshUser.pending, refreshUser.rejected), toogleLoader)
       .addMatcher(isPending(register, logIn, logOut), toogleLoader)
       .addMatcher(isFulfilled(register, logIn), handleLogIn);
   },

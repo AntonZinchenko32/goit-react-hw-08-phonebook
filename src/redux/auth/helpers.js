@@ -1,34 +1,36 @@
 import toast from 'react-hot-toast';
+import { toastDuration } from 'utils/vars';
 
-// Перемикач відображення Лоудера
+// Перемикачі
 export const toogleLoader = state => {
   state.isLoading = !state.isLoading;
 };
+export const toogleLoginStatus = state => {
+  state.isLoggedIn = !state.isLoggedIn
+}
+
 
 export const handleLogIn = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
-  state.isLoggedIn = true;
-  toogleLoader(state)
+  toogleLoginStatus(state)
+  toogleLoader(state);
+  toast.success(`Welcome ${state.user.name}!`, toastDuration);
 };
 
 export const handleLogOut = state => {
   state.user = { name: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
-  toogleLoader(state)
+  toogleLoader(state);
 };
 
 export const handleRefresh = (state, { payload }) => {
   state.user = payload;
-  state.isLoggedIn = true;
-  toogleLoader(state)
+  toogleLoginStatus(state)
+  toogleLoader(state);
 };
 
 export const handleReject = text => {
-  toast.error(text, { duration: 4000 });
+  toast.error(text, toastDuration);
 };
-
-
-
-

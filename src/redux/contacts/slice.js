@@ -1,4 +1,4 @@
-import { createSlice, isRejected, isPending } from '@reduxjs/toolkit';
+import { createSlice, isRejected, isPending, isFulfilled } from '@reduxjs/toolkit';
 import {
   handleFulfilled,
   handleFulfilledAll,
@@ -6,6 +6,8 @@ import {
   handleRejected,
 } from './helpers';
 import { addContact, deleteContact, fetchContacts } from './operations';
+
+const allOperations = [addContact, deleteContact, fetchContacts]
 
 const contactsInitialState = {
   items: [],
@@ -19,12 +21,12 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, handleFulfilledAll)
-      .addMatcher(isPending(fetchContacts, addContact, deleteContact), handlePending)
+      .addMatcher(isPending(...allOperations), handlePending)
       .addMatcher(
-        isRejected(fetchContacts, addContact, deleteContact),
+        isRejected(...allOperations),
         handleRejected
       )
-      .addMatcher(action => action.type.endsWith('fulfilled'), handleFulfilled);
+      .addMatcher(isFulfilled(...allOperations), handleFulfilled);
   },
 });
 

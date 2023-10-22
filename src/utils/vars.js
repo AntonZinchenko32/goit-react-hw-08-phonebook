@@ -1,0 +1,1 @@
+export const toastDuration = {duration: 4000}
