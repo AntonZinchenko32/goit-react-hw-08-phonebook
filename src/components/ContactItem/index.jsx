@@ -1,8 +1,14 @@
 import { useDispatch } from 'react-redux';
 
 import { deleteContact, fetchContacts } from 'redux/contacts/operations';
-import PropTypes from 'prop-types';
-import { Item, DeleteButton } from './ContactItem.styled';
+
+import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import ListItemText from '@mui/material/ListItemText';
 
 const ContactItem = ({ name, id, number }) => {
   const dispatch = useDispatch();
@@ -13,17 +19,25 @@ const ContactItem = ({ name, id, number }) => {
   };
 
   return (
-    <Item>
-      {name}: {number}
-      <DeleteButton onClick={() => handleDelete()}>Delete</DeleteButton>
-    </Item>
+    <ListItem
+      secondaryAction={
+        <IconButton
+          onClick={() => handleDelete()}
+          edge="end"
+          aria-label="delete"
+        >
+          <DeleteIcon />
+        </IconButton>
+      }
+    >
+      <ListItemAvatar>
+        <Avatar>
+          <ContactPhoneIcon />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={name} secondary={number} />
+    </ListItem>
   );
-};
-
-ContactItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
 };
 
 export default ContactItem;
