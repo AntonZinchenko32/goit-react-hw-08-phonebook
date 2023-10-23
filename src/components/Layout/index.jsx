@@ -1,4 +1,4 @@
-import { AppBar } from 'components/AppBar';
+import { AppBarComponent } from 'components/AppBar';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Container } from './Layout.styled';
@@ -9,13 +9,15 @@ import { useAuth } from 'hooks';
 const Layout = () => {
   const { isLoading } = useAuth();
   return (
-    <Container>
+    <>
       {isLoading && <Loader />}
-      <AppBar />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
-    </Container>
+      <AppBarComponent />
+      <Container>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Container>
+    </>
   );
 };
 
