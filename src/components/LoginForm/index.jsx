@@ -27,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <Form onSubmit={handleSubmit} autoComplete="off">
-      <Box sx={{ '& > :not(style)': { m: 2 } }}>
+      <Box sx={{ '& > :not(style)': { m: 1 } }}>
         <Box
           sx={{
             display: 'flex',
@@ -37,15 +37,15 @@ export const LoginForm = () => {
           <EmailIcon
             sx={{
               color: 'action.active',
-              mr: 1,
+              mr: 2,
               my: 0.5,
             }}
           />
           <TextField
-            sx={{ width: '100%' }}
+            fullWidth
             name="email"
             type="email"
-            label="E-mail"
+            label="e-mail"
             variant="standard"
           />
         </Box>
@@ -53,12 +53,13 @@ export const LoginForm = () => {
           <VpnKeyIcon
             sx={{
               color: 'action.active',
-              mr: 1,
+              mr: 2,
               my: 0.5,
             }}
           />
           <TextField
-            sx={{ width: '100%' }}
+            margin="dense"
+            fullWidth
             name="password"
             label="password"
             variant="standard"
@@ -67,7 +68,7 @@ export const LoginForm = () => {
         </Box>
       </Box>
       <Button
-        sx={{ margin: '0 auto', width: '150px' }}
+        sx={{ margin: '15px auto 0px auto', width: '100px' }}
         type="submit"
         variant="contained"
       >
