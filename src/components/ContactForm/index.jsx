@@ -1,16 +1,15 @@
-import { nanoid } from 'nanoid';
 // redux
 import { selectContacts } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, fetchContacts } from 'redux/contacts/operations';
 
-import { Form, Input, SubmitButton } from './ContactForm.styled';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const ContactForm = () => {
   const contactsList = useSelector(selectContacts);
-
-  const nameInputId = nanoid();
-  const numberInputId = nanoid();
 
   const dispatch = useDispatch();
 
@@ -44,27 +43,42 @@ const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <label htmlFor={nameInputId}>Name</label>
-      <Input
-        id={nameInputId}
-        type="text"
-        name="nameInput"
-        pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-      />
-      <label htmlFor={numberInputId}>Number</label>
-      <Input
-        id={numberInputId}
-        type="tel"
-        name="numberInput"
-        pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-        title="Number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
-      <SubmitButton type="submit">Add contact</SubmitButton>
-    </Form>
+    <Box
+      onSubmit={handleSubmit}
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1 },
+        display: 'flex',
+        alignItems: 'center',
+      }}
+      autoComplete="off"
+    >
+      <div>
+        <TextField
+          label="Name"
+          id="filled-size-small"
+          variant="filled"
+          size="small"
+          name="nameInput"
+          type="text"
+        />
+        <TextField
+          label="Number"
+          id="filled-size-normal"
+          variant="filled"
+          size="small"
+          name="numberInput"
+          type="tel"
+        />
+      </div>
+      <Button
+        sx={{ height: '40px', marginLeft: '20px' }}
+        type="submit"
+        variant="contained"
+      >
+        Add Contact
+      </Button>
+    </Box>
   );
 };
 
