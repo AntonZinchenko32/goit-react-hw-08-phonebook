@@ -6,7 +6,7 @@ import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import { Loader } from 'components/Loader';
 // Styles
-import { Container, Headline } from './Contacts.styled';
+import { Container } from './Contacts.styled';
 // Redux
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
@@ -24,7 +24,6 @@ const Contacts = () => {
   return (
     <Container>
       <ContactForm />
-      <Headline>Contacts</Headline>
       <Filter />
       {isLoading && !error && <Loader />}
       <ContactList />

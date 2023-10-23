@@ -50,6 +50,7 @@ const ContactForm = () => {
         '& .MuiTextField-root': { m: 1 },
         display: 'flex',
         alignItems: 'center',
+        marginBottom: '20px',
       }}
       autoComplete="off"
     >
