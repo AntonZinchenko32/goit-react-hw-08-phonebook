@@ -49,6 +49,11 @@ export const RegisterForm = () => {
             type="text"
             label="name"
             variant="standard"
+            required
+            inputProps={{
+              inputMode: 'text',
+              pattern: '[^0-9,s]{2,20}',
+            }}
           />
         </Box>
         <Box
@@ -70,6 +75,7 @@ export const RegisterForm = () => {
             type="email"
             label="e-mail"
             variant="standard"
+            required
           />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -87,6 +93,11 @@ export const RegisterForm = () => {
             label="password"
             variant="standard"
             type="password"
+            required
+            inputProps={{
+              inputMode: 'password',
+              pattern: '.{7,}',
+            }}
           />
         </Box>
       </Box>

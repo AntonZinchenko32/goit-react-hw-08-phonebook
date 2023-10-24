@@ -47,6 +47,7 @@ export const LoginForm = () => {
             type="email"
             label="e-mail"
             variant="standard"
+            required
           />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
@@ -64,6 +65,7 @@ export const LoginForm = () => {
             label="password"
             variant="standard"
             type="password"
+            required
           />
         </Box>
       </Box>

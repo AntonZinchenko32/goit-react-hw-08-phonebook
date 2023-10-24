@@ -4,24 +4,29 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 120px;
+  margin-bottom: 45px;
+  padding: 17px;
 `;
 export const Box = styled.div`
-margin-right: 70px;
+display: flex;
+flex-direction: column;
+margin-bottom: 20px;
 `
 
 
 export const Label = styled.label`
 font-size: large;
-margin-right: 20px;
+margin-bottom: 7px;
 font-weight: bold;
 `
 export const Input = styled.input`
 width: 300px;
 height: 35px;
-margin-right: 20px;
+
+
 font-size: large;
 `
 
