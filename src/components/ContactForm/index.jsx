@@ -20,6 +20,7 @@ const ContactForm = () => {
 
   const dispatch = useDispatch();
 
+  // Перевырка, чи еонтакт не повторюэться та додавання контакту
   async function handleCheck(contacts, contactData) {
     const { name, number } = contactData;
     const gotMatch = contacts.find(contact => {
@@ -34,6 +35,7 @@ const ContactForm = () => {
     }
   }
 
+  // Забираэмо дані з форми
   const handleSubmit = evt => {
     evt.preventDefault();
 
