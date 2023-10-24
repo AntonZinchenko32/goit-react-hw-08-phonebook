@@ -1,19 +1,23 @@
+import { nanoid } from '@reduxjs/toolkit';
+
 // redux
 import { selectContacts } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact, fetchContacts } from 'redux/contacts/operations';
 
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+import { Form, Box, Label, Input } from './ContactForm.styled';
+
 const ContactForm = () => {
+  const nameInputId = nanoid();
+  const phoneInputId = nanoid();
   const contactsList = useSelector(selectContacts);
 
   const dispatch = useDispatch();
 
-  const handleCheck = async (contacts, contactData) => {
+  async function handleCheck(contacts, contactData) {
     const { name, number } = contactData;
     const gotMatch = contacts.find(contact => {
       return contact.name.toLowerCase() === name.toLowerCase();
@@ -25,7 +29,7 @@ const ContactForm = () => {
     } else {
       alert(`${name} already in list`);
     }
-  };
+  }
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -43,43 +47,38 @@ const ContactForm = () => {
   };
 
   return (
-    <Box
-      onSubmit={handleSubmit}
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1 },
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '20px',
-      }}
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          label="Name"
-          id="filled-size-small"
-          variant="filled"
-          size="small"
-          name="nameInput"
+    <Form onSubmit={handleSubmit}>
+      <Box>
+        <Label htmlFor={nameInputId}>Name</Label>
+        <Input
+          id={nameInputId}
           type="text"
+          name="nameInput"
+          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
         />
-        <TextField
-          label="Number"
-          id="filled-size-normal"
-          variant="filled"
-          size="small"
-          name="numberInput"
+      </Box>
+      <Box>
+        <Label htmlFor={phoneInputId}>Phone Number</Label>
+        <Input
+          id={phoneInputId}
           type="tel"
+          name="phoneInput"
+          pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
         />
-      </div>
+      </Box>
       <Button
-        sx={{ height: '40px', marginLeft: '20px' }}
+        sx={{ height: '40px', width: '140px' }}
         type="submit"
         variant="contained"
+        fullWidth
       >
         Add Contact
       </Button>
-    </Box>
+    </Form>
   );
 };
 

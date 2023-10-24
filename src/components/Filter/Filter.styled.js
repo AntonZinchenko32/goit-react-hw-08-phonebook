@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Label = styled.label`
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 500;
 `;
 
 export const Input = styled.input`
@@ -11,7 +12,7 @@ export const Input = styled.input`
   width: 250px;
   height: 28px;
 
-  border-radius: 3px;
+  /* border-radius: 3px; */
 
   font-size: large;
 `;
