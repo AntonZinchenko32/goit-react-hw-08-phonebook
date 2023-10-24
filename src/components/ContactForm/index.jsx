@@ -39,7 +39,7 @@ const ContactForm = () => {
 
     const form = evt.currentTarget;
 
-    const { nameInput, numberInput } = evt.currentTarget.elements;
+    const { nameInput, numberInput } = form.elements;
 
     const name = nameInput.value.trim();
     const number = numberInput.value.trim();

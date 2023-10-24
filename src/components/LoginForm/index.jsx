@@ -66,6 +66,10 @@ export const LoginForm = () => {
             variant="standard"
             type="password"
             required
+            inputProps={{
+              inputMode: 'password',
+              pattern: '.{7,}',
+            }}
           />
         </Box>
       </Box>
