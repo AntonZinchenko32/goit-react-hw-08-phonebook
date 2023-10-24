@@ -15,7 +15,7 @@ import { Form, Box, Label, Input } from './ContactForm.styled';
 
 const ContactForm = () => {
   const nameInputId = nanoid();
-  const phoneInputId = nanoid();
+  const numberInputId = nanoid();
   const contactsList = useSelector(selectContacts);
 
   const dispatch = useDispatch();
@@ -65,13 +65,13 @@ const ContactForm = () => {
         />
       </Box>
       <Box>
-        <Label htmlFor={phoneInputId}>Phone Number</Label>
+        <Label htmlFor={numberInputId}>Phone Number</Label>
         <Input
-          id={phoneInputId}
+          id={numberInputId}
           type="tel"
-          name="phoneInput"
+          name="numberInput"
           pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title="Number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
       </Box>
