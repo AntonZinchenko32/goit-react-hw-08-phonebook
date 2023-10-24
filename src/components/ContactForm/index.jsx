@@ -8,6 +8,9 @@ import { addContact, fetchContacts } from 'redux/contacts/operations';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 
+import { toast } from 'react-hot-toast';
+import { toastDuration } from 'utils/vars';
+
 import { Form, Box, Label, Input } from './ContactForm.styled';
 
 const ContactForm = () => {
@@ -27,7 +30,7 @@ const ContactForm = () => {
       await dispatch(addContact({ name, number })).unwrap();
       dispatch(fetchContacts());
     } else {
-      alert(`${name} already in list`);
+      toast.error(`${name} already in list`, toastDuration);
     }
   }
 
